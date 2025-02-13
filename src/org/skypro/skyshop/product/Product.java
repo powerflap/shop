@@ -2,15 +2,15 @@ package org.skypro.skyshop.product;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Product {
+public abstract class Product {
     @NotNull
     private final String title;
 
-    private final int price;
-
-    public Product(@NotNull String title, int price) {
+    public Product(@NotNull String title) {
+        if (title.isBlank()) {
+            throw new IllegalArgumentException("Наименование продукта не может быть пустым");
+        }
         this.title = title;
-        this.price = price;
     }
 
     @NotNull
@@ -18,7 +18,33 @@ public class Product {
         return title;
     }
 
-    public int getPrice() {
-        return price;
+    @NotNull
+    public abstract int getPrice();
+
+    @Override
+    public String toString() {
+        return title;
     }
+
+    public boolean isSpecial() {
+        return false;
+    }
+
+    @NotNull
+    public String getSearchableName() {
+        return this.getClass().getSimpleName() + "-" + SEARCHABLE_CONTENT_KIND + "-" + this.hashCode();
+    }
+
+
+    public @NotNull String getSearchableTerm() {
+        return toString();
+    }
+
+    public static final String SEARCHABLE_CONTENT_KIND = "PRODUCT";
+
+
+    public @NotNull String getSearchableContentKind() {
+        return SEARCHABLE_CONTENT_KIND;
+    }
+
 }
