@@ -1,11 +1,14 @@
 package org.skypro.skyshop;
 
 
+import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.searcheble.SearchEngine;
+import org.skypro.skyshop.searcheble.Searchable;
 
 
 public class App {
@@ -17,7 +20,7 @@ public class App {
         Product product4 = new DiscountProduct("Масло", 400, 20);
         Product product5 = new DiscountProduct("Яйца", 140, 10);
         Product product6 = new SimpleProduct("Мясо", 900);
-        Product product7 = new SimpleProduct("Бластер", 200);
+        Product product7 = new SimpleProduct("водяной пистолет", 200);
 
 
         var basket = new ProductBasket();
@@ -132,5 +135,42 @@ public class App {
         basket.add(product7);
 
         basket.print();
-    }
-}
+
+    Article article1 = new Article ("У нас в магазине только сегодня,",
+            "только в данный момент, " +
+                    "продается Водяной пистолет ");
+
+    Article article2 = new Article("Внимание!",
+            "В третьем отделе нашего интернет магазина " +
+                    "пропал ребенок! " +
+                    "Кто найдет -  " +
+                    "забирайте");
+
+    Article article3 = new Article("Да,",
+            "У нас дороже, чем в других магазинах, " +
+                    "но вы, всеравно покупаете");
+
+    Article article4 = new Article("В пятницу в отделе мяса будет проходить",
+            "мощнейшая рейв вечеринка! " +
+                    "Вход свободный. 14+");
+
+
+
+    SearchEngine searchEngine = new SearchEngine();
+
+        System.out.println("Заполнение движка поиска...");
+        searchEngine = new SearchEngine();
+        searchEngine.add((Searchable) product1);
+        searchEngine.add((Searchable) product2);
+        searchEngine.add((Searchable) product3);
+        searchEngine.add((Searchable) product4);
+        searchEngine.add((Searchable) product5);
+        searchEngine.add((Searchable) product6);
+        searchEngine.add((Searchable) product7);
+        searchEngine.add(article1);
+        searchEngine.add(article2);
+        searchEngine.add(article3);
+        searchEngine.add(article4);
+        System.out.println("Заполнен");
+
+}}
