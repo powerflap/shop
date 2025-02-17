@@ -7,6 +7,7 @@ import org.skypro.skyshop.product.DiscountProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.searcheble.BestResultNotFound;
 import org.skypro.skyshop.searcheble.SearchEngine;
 import org.skypro.skyshop.searcheble.Searchable;
 
@@ -173,4 +174,135 @@ public class App {
         searchEngine.add(article4);
         System.out.println("Заполнен");
 
-}}
+        String query = "Молоко";
+        var searchResults = searchEngine.search(query);
+        System.out.println("Результаты поиска " + query + ": " + ArrayTools.toString(searchResults));
+
+        query = "молоко";
+        searchResults = searchEngine.search(query);
+        System.out.println("Результаты поиска " + query + ": " + ArrayTools.toString(searchResults));
+
+        query = "Водяной пистолет";
+        searchResults = searchEngine.search(query);
+        System.out.println("Результаты поиска " + query + ": " + ArrayTools.toString(searchResults));
+
+        query = "мясо";
+        searchResults = searchEngine.search(query);
+        System.out.println("Результаты поиска " + query + ": " + ArrayTools.toString(searchResults));
+
+        System.out.println();
+
+        query = "сыр";
+        searchResults = searchEngine.search(query);
+        System.out.println("Результаты поиска " + query + ": " + '\n' + ArrayTools.toString(searchResults));
+
+        System.out.println();
+
+        System.out.println("Создание SimpleProduct с неверным названием...");
+        try {
+            @SuppressWarnings("unused")
+            Product product8 = new SimpleProduct("  ", 1);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println("Создание SimpleProduct с неверной ценой...");
+        try {
+            @SuppressWarnings("unused")
+            Product product8 = new SimpleProduct("Продукт №8", 0);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println("Создание DiscountedProduct с неверным названием...");
+        try {
+            @SuppressWarnings("unused")
+            Product product8 = new DiscountProduct("  ", 1, 0);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println("Создание DiscountedProduct с неверной ценой...");
+        try {
+            @SuppressWarnings("unused")
+            Product product8 = new DiscountProduct("Продукт №8", 0, 0);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println("Создание DiscountedProduct с неверной скидкой...");
+        try {
+            @SuppressWarnings("unused")
+            Product product8 = new DiscountProduct("Продукт №8", 1, -1);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println();
+        Searchable bestResult;
+
+        query = "вечеринка";
+        System.out.println("Поиск лучшего результата для " + query + "...");
+        try {
+            bestResult = searchEngine.searchMostFrequent(query);
+            System.out.println("Результаты поиска " + query + ": " + bestResult);
+        } catch (BestResultNotFound ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        query = "пропал ребенок";
+        System.out.println("Поиск лучшего результата для " + query + "...");
+        try {
+            bestResult = searchEngine.searchMostFrequent(query);
+            System.out.println("Результаты поиска " + query + ": " + bestResult);
+        } catch (BestResultNotFound ex) {
+            System.out.println("Ошибка: " + ex.getMessage());
+        }
+
+        System.out.println();
+
+
+        System.out.println("Заполнение корзины. Ещё раз...");
+        basket.add(product1);
+        basket.add(product2);
+        basket.add(product3);
+        basket.add(product4);
+        basket.add(product5);
+        basket.add(product6);
+        basket.add(product7);
+
+
+        query = "Молоко";
+        System.out.println("Удаляем продукт " + query + " из корзины...");
+        var removedProducts = basket.remove(query);
+
+
+        System.out.println("Удаленные продукты: ");
+        for (var product : removedProducts) {
+            System.out.println(product);
+        }
+
+        System.out.println();
+
+        basket.print();
+
+        System.out.println();
+
+
+        query = "Жигулевское охлажденное";
+        System.out.println("Удаляем несуществующий продукт " + query + " из корзины...");
+        removedProducts = basket.remove(query);
+
+
+        if (removedProducts.isEmpty()) {
+            System.out.println("Список пуст");
+        } else {
+            System.out.println("Список не пуст!");
+        }
+
+        System.out.println();
+
+
+        basket.print();
+    }
+}

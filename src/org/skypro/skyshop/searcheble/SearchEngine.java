@@ -12,43 +12,26 @@ import java.util.TreeSet;
 public final class SearchEngine {
     private final HashSet<Searchable> searchableItems;
 
-    /**
-     * Конструктор.
-     *
-     */
+
     public SearchEngine() {
         this.searchableItems = new HashSet<>();
         clear();
     }
 
-    /**
-     * Очистка массива.
-     */
+
     public void clear() {
         searchableItems.clear();
     }
 
-    /**
-     * Добавление элемента в массив.
-     *
-     * @param searchable элемент для добавления.
-     */
+
     public void add(@NotNull Searchable searchable) {
         searchableItems.add(searchable);
     }
 
-    /**
-     * Количество результатов поиска.
-     */
+
     public static final int MAX_RESULTS = 10_000;
 
-    /**
-     * Поиск.<br>
-     * Ограничение по количеству результатов оставлено для безопасности,<br>
-     * но предел увеличен до очень большого значения.
-     *
-     * @param query запрос.
-     */
+
     @NotNull
     public Set<Searchable> search(@NotNull String query) {
         Set<Searchable> results = new TreeSet<>(new CustomComparator());
@@ -80,12 +63,7 @@ public final class SearchEngine {
         }
     }
 
-    /**
-     * Поиск наиболее частого результата.
-     *
-     * @param query запрос.
-     * @throws BestResultNotFound если не найдено совпадений.
-     */
+
     @NotNull
     public Searchable searchMostFrequent(String query) throws BestResultNotFound {
         if (searchableItems.isEmpty()) {

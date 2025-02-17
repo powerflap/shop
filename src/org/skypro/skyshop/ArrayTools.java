@@ -1,9 +1,10 @@
 package org.skypro.skyshop;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.skypro.skyshop.searcheble.Searchable;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public final class ArrayTools {
 
@@ -38,7 +39,7 @@ public final class ArrayTools {
     }
 
 
-    public static <K, V> @NotNull String toString(Map<K, V> map) {
+    public static <K, V> @NotNull String toString(Set<Searchable> map) {
         if (map == null) {
             return "";
         }
