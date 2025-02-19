@@ -5,11 +5,6 @@ import org.jetbrains.annotations.NotNull;
 public class SimpleProduct extends Product {
     private final int price;
 
-    /**
-     * Конструктор.
-     *
-     * @param title название продукта
-     */
     public SimpleProduct(@NotNull String title, int price) {
         super(title);
         if (price <= 0) {

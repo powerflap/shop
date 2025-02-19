@@ -1,19 +1,22 @@
-package org.skypro.skyshop.product;
+package org.skypro.skyshop.article;
 
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Product {
-    /**
-     * Название продукта.
-     */
+import java.util.Objects;
+
+
+
+@SuppressWarnings("all")
+public final class Article implements org.skypro.skyshop.searcheble.Searchable {
     @NotNull
     private final String title;
+    @NotNull
+    private final String content;
 
-    public Product(@NotNull String title) {
-        if (title.isBlank()) {
-            throw new IllegalArgumentException("Наименование продукта не может быть пустым");
-        }
+
+    public Article(@NotNull String title, @NotNull String content) {
         this.title = title;
+        this.content = content;
     }
 
 
@@ -23,15 +26,13 @@ public abstract class Product {
     }
 
     @NotNull
-    public abstract int getPrice();
+    public String getContent() {
+        return content;
+    }
 
     @Override
     public String toString() {
-        return title;
-    }
-
-    public boolean isSpecial() {
-        return false;
+        return title + "\n" + content;
     }
 
     @NotNull
@@ -44,7 +45,7 @@ public abstract class Product {
         return toString();
     }
 
-    public static final String SEARCHABLE_CONTENT_KIND = "PRODUCT";
+    public static final String SEARCHABLE_CONTENT_KIND = "ARTICLE";
 
     @Override
     public @NotNull String getSearchableContentKind() {
@@ -54,12 +55,13 @@ public abstract class Product {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(title, product.title);
+        Article article = (Article) o;
+        return Objects.equals(title, article.title);
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(title);
     }
+
 }
