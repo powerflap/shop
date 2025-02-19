@@ -18,7 +18,6 @@ public final class SearchEngine {
         clear();
     }
 
-
     public void clear() {
         searchableItems.clear();
     }

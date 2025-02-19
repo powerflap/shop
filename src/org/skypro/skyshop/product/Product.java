@@ -16,7 +16,6 @@ public abstract class Product {
         this.title = title;
     }
 
-
     @NotNull
     public String getTitle() {
         return title;

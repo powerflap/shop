@@ -1,4 +1,5 @@
 package org.skypro.skyshop;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.skypro.skyshop.searcheble.Searchable;
@@ -24,7 +25,6 @@ public final class ArrayTools {
         return NOT_FOUND;
     }
 
-
     @SuppressWarnings("unused")
     public static <T> @NotNull String toString(List<T> list) {
         if (list == null) {
@@ -45,7 +45,7 @@ public final class ArrayTools {
         }
 
         var sb = new StringBuilder();
-        for(var mapEntry : map.entrySet()) {
+        for (var mapEntry : map.entrySet()) {
             sb.append(mapEntry.getKey()).append(": ").append(mapEntry.getValue())
                     .append('\n');
 

@@ -14,7 +14,6 @@ public interface Searchable {
     @NotNull
     String getSearchableTerm();
 
-
     @SuppressWarnings("unused")
     @NotNull
     String getSearchableContentKind();
