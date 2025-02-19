@@ -116,7 +116,6 @@ public class ProductBasket {
         }
     }
 
-
     public boolean contains(@NotNull String title) {
         return basket.containsKey(title);
     }

@@ -1,7 +1,5 @@
 package org.skypro.skyshop.searcheble;
-
 import org.jetbrains.annotations.NotNull;
-
 public interface Searchable {
 
     @SuppressWarnings("unused")

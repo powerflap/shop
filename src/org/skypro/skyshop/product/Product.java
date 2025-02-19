@@ -1,5 +1,4 @@
 package org.skypro.skyshop.product;
-
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Product {

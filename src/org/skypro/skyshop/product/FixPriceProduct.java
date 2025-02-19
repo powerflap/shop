@@ -1,5 +1,4 @@
 package org.skypro.skyshop.product;
-
 import org.jetbrains.annotations.NotNull;
 
 public class FixPriceProduct extends Product {

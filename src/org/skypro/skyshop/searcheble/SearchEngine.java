@@ -79,11 +79,9 @@ public final class SearchEngine {
                 mostFrequent = searchable;
             }
         }
-
         if (maxCount <= 0) {
             throw new BestResultNotFound("Не найдено совпадений");
         }
-
         return mostFrequent;
     }
 }

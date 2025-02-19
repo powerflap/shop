@@ -1,5 +1,4 @@
 package org.skypro.skyshop;
-
 import org.jetbrains.annotations.NotNull;
 
 public final class StringTools {

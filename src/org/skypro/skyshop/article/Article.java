@@ -12,7 +12,6 @@ public final class Article implements org.skypro.skyshop.searcheble.Searchable {
     @NotNull
     private final String content;
 
-
     public Article(@NotNull String title, @NotNull String content) {
         this.title = title;
         this.content = content;
