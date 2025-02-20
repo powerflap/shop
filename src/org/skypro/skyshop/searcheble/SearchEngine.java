@@ -18,7 +18,6 @@ public final class SearchEngine {
         clear();
     }
 
-
     public void clear() {
         searchableItems.clear();
     }
@@ -80,11 +79,9 @@ public final class SearchEngine {
                 mostFrequent = searchable;
             }
         }
-
         if (maxCount <= 0) {
             throw new BestResultNotFound("Не найдено совпадений");
         }
-
         return mostFrequent;
     }
 }

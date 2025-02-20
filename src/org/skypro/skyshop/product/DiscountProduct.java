@@ -1,11 +1,9 @@
 package org.skypro.skyshop.product;
-
 import org.jetbrains.annotations.NotNull;
 
 public class DiscountProduct extends Product {
     private final int basePrice;
     private final int discount;
-
     public DiscountProduct(@NotNull String title, int basePrice, int discount) {
         super(title);
         if (basePrice <= 0) {
@@ -17,7 +15,6 @@ public class DiscountProduct extends Product {
         }
         this.discount = discount;
     }
-
     @Override
     public @NotNull int getPrice() {
         return basePrice - (int) ((double) (basePrice * discount) / 100.0);

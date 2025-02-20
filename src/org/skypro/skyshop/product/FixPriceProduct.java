@@ -1,5 +1,4 @@
 package org.skypro.skyshop.product;
-
 import org.jetbrains.annotations.NotNull;
 
 public class FixPriceProduct extends Product {
@@ -13,12 +12,10 @@ public class FixPriceProduct extends Product {
     public int getPrice() {
         return FIX_PRICE;
     }
-
     @Override
     public String toString() {
         return getTitle() + ": Фиксированная цена " + FIX_PRICE;
     }
-
     @Override
     public boolean isSpecial() {
         return true;

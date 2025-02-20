@@ -1,6 +1,5 @@
 package org.skypro.skyshop;
 
-
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountProduct;
@@ -78,7 +77,6 @@ public class App {
         System.out.println();
 
 
-
         System.out.println("Создание SimpleProduct с неверным названием...");
         try {
             @SuppressWarnings("unused")
@@ -122,7 +120,6 @@ public class App {
         System.out.println();
 
 
-
         System.out.println();
 
 
@@ -137,27 +134,26 @@ public class App {
 
         basket.print();
 
-    Article article1 = new Article ("У нас в магазине только сегодня,",
-            "только в данный момент, " +
-                    "продается Водяной пистолет ");
+        Article article1 = new Article("У нас в магазине только сегодня,",
+                "только в данный момент, " +
+                        "продается Водяной пистолет ");
 
-    Article article2 = new Article("Внимание!",
-            "В третьем отделе нашего интернет магазина " +
-                    "пропал ребенок! " +
-                    "Кто найдет -  " +
-                    "забирайте");
+        Article article2 = new Article("Внимание!",
+                "В третьем отделе нашего интернет магазина " +
+                        "пропал ребенок! " +
+                        "Кто найдет -  " +
+                        "забирайте");
 
-    Article article3 = new Article("Да,",
-            "У нас дороже, чем в других магазинах, " +
-                    "но вы, всеравно покупаете");
+        Article article3 = new Article("Да,",
+                "У нас дороже, чем в других магазинах, " +
+                        "но вы, всеравно покупаете");
 
-    Article article4 = new Article("В пятницу в отделе мяса будет проходить",
-            "мощнейшая рейв вечеринка! " +
-                    "Вход свободный. 14+");
+        Article article4 = new Article("В пятницу в отделе мяса будет проходить",
+                "мощнейшая рейв вечеринка! " +
+                        "Вход свободный. 14+");
 
 
-
-    SearchEngine searchEngine = new SearchEngine();
+        SearchEngine searchEngine = new SearchEngine();
 
         System.out.println("Заполнение движка поиска...");
         searchEngine = new SearchEngine();

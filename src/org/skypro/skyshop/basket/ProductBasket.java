@@ -87,8 +87,6 @@ public class ProductBasket {
         }
         return count;
     }
-
-
     @SuppressWarnings("unused")
     private int getProductCount() {
         if (basket.isEmpty()) {
@@ -117,7 +115,6 @@ public class ProductBasket {
             }
         }
     }
-
 
     public boolean contains(@NotNull String title) {
         return basket.containsKey(title);

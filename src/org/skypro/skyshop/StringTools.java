@@ -1,5 +1,4 @@
 package org.skypro.skyshop;
-
 import org.jetbrains.annotations.NotNull;
 
 public final class StringTools {
@@ -15,7 +14,6 @@ public final class StringTools {
             count++;
             fromIndex += queryLength;
         }
-
         return count;
     }
 }

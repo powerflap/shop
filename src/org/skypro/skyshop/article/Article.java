@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 
-
 @SuppressWarnings("all")
 public final class Article implements org.skypro.skyshop.searcheble.Searchable {
     @NotNull
@@ -13,12 +12,10 @@ public final class Article implements org.skypro.skyshop.searcheble.Searchable {
     @NotNull
     private final String content;
 
-
     public Article(@NotNull String title, @NotNull String content) {
         this.title = title;
         this.content = content;
     }
-
 
     @NotNull
     public String getTitle() {
@@ -39,7 +36,6 @@ public final class Article implements org.skypro.skyshop.searcheble.Searchable {
     public String getSearchableName() {
         return this.getClass().getSimpleName() + "-" + SEARCHABLE_CONTENT_KIND + "-" + this.hashCode();
     }
-
     @Override
     public @NotNull String getSearchableTerm() {
         return toString();

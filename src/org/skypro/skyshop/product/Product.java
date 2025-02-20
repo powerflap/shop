@@ -1,5 +1,4 @@
 package org.skypro.skyshop.product;
-
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Product {
@@ -15,7 +14,6 @@ public abstract class Product {
         }
         this.title = title;
     }
-
 
     @NotNull
     public String getTitle() {
