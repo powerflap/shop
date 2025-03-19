@@ -31,7 +31,7 @@ public final class ArrayTools {
 
         String[] semiResults = new String[list.size()];
         for (int i = 0; i < semiResults.length; i++) {
-            semiResults[i] = list.get(i).toString();
+            semiResults[i] = list.get(i).toString();1`1
         }
         return String.join(", ", semiResults);
     }

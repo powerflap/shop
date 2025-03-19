@@ -1,16 +1,13 @@
 package org.skypro.skyshop.searcheble;
-
 import org.jetbrains.annotations.NotNull;
 import org.skypro.skyshop.StringTools;
-
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
-
+import org.skypro.skyshop.searcheble.Searchable;
 
 public final class SearchEngine {
-    private final HashSet<org.skypro.skyshop.searcheble.Searchable> searchableItems;
+    private final HashSet searchableItems;
 
 
     public SearchEngine() {
@@ -23,7 +20,7 @@ public final class SearchEngine {
     }
 
 
-    public void add(@NotNull org.skypro.skyshop.searcheble.Searchable searchable) {
+    public void add(@NotNull Searchable searchable) {
         searchableItems.add(searchable);
     }
 
@@ -32,11 +29,11 @@ public final class SearchEngine {
 
 
     @NotNull
-    public Set<org.skypro.skyshop.searcheble.Searchable> search(@NotNull String query) {
-        Set<org.skypro.skyshop.searcheble.Searchable> results = new TreeSet<>(new CustomComparator());
+    public Set<Searchable> search(@NotNull String query) {
+        Set<Searchable> results = new TreeSet<>(new CustomComparator());
 
         int i = 0;
-        for (org.skypro.skyshop.searcheble.Searchable searchable : searchableItems) {
+        for (Searchable searchable : searchableItems) {
             if (searchable == null) {
                 continue;
             }
@@ -50,29 +47,19 @@ public final class SearchEngine {
         return results;
     }
 
-    public static class CustomComparator implements Comparator<org.skypro.skyshop.searcheble.Searchable> {
-        @Override
-        public int compare(org.skypro.skyshop.searcheble.Searchable o1, org.skypro.skyshop.searcheble.Searchable o2) {
-            int result = Integer.compare(o1.getSearchableName().length(),
-                    o2.getSearchableName().length());
-            if (result != 0) {
-                return o1.getSearchableTerm().compareTo(o2.getSearchableTerm());
-            }
-            return result;
-        }
-    }
+
 
 
     @NotNull
-    public org.skypro.skyshop.searcheble.Searchable searchMostFrequent(String query) throws org.skypro.skyshop.searcheble.BestResultNotFound {
+    public Searchable searchMostFrequent(String query) throws org.skypro.skyshop.searcheble.BestResultNotFound {
         if (searchableItems.isEmpty()) {
             throw new org.skypro.skyshop.searcheble.BestResultNotFound("Массив элементов для поиска пуст");
         }
 
-        org.skypro.skyshop.searcheble.Searchable mostFrequent = searchableItems.getFirst();
+        Searchable mostFrequent = searchableItems.getFirst();
         int maxCount = StringTools.countMatches(mostFrequent.getSearchableTerm(), query);
 
-        for (org.skypro.skyshop.searcheble.Searchable searchable : searchableItems) {
+        for (Searchable searchable : searchableItems) {
             int count = StringTools.countMatches(searchable.getSearchableTerm(), query);
             if (count > maxCount) {
                 maxCount = count;
